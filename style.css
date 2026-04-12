@@ -57,9 +57,10 @@ nav ul li a:hover {
 }
 
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20abstract%20background%20for%20website&image_size=landscape_16_9');
+    background: linear-gradient(rgba(0, 30, 60, 0.25), rgba(0, 30, 60, 0.25)), url('images/background.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     height: 100vh;
     display: flex;
     align-items: center;
