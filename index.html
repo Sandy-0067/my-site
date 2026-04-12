@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandy的个人网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>Sandy</h1>
+                <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#skills">技能</a></li>
+                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#contact">联系我</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>你好，我是 <span>Sandy</span></h2>
+            <p>欢迎来到我的个人网站</p>
+            <a href="#about" class="btn">了解更多</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>关于我</h2>
+            <div class="about-content">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20a%20person%20named%20Sandy&image_size=square" alt="Sandy">
+                <div class="about-text">
+                    <p>你好，我是Sandy，一个充满热情的学习者和创作者。我热爱技术、设计和创新，喜欢探索新的领域和挑战自己。</p>
+                    <p>我相信不断学习和成长是人生的重要部分，因此我始终保持着对新知识的渴望和对技能的提升。</p>
+                    <p>在这个网站上，你可以了解我的技能、项目和经历，希望能与你建立联系并共同成长。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>我的技能</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>前端开发</h3>
+                    <p>HTML, CSS, JavaScript, React</p>
+                </div>
+                <div class="skill-item">
+                    <h3>后端开发</h3>
+                    <p>Node.js, Python, Java</p>
+                </div>
+                <div class="skill-item">
+                    <h3>设计</h3>
+                    <p>UI/UX设计, 平面设计, 响应式设计</p>
+                </div>
+                <div class="skill-item">
+                    <h3>其他</h3>
+                    <p>项目管理, 数据分析, 问题解决</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>我的项目</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=web%20application%20project%20screenshot&image_size=landscape_16_9" alt="项目1">
+                    <h3>项目1</h3>
+                    <p>这是一个使用React和Node.js开发的Web应用程序，具有现代化的UI和良好的用户体验。</p>
+                </div>
+                <div class="project-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=mobile%20app%20project%20screenshot&image_size=landscape_16_9" alt="项目2">
+                    <h3>项目2</h3>
+                    <p>这是一个跨平台移动应用，使用React Native开发，提供了丰富的功能和流畅的用户界面。</p>
+                </div>
+                <div class="project-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=data%20visualization%20project%20screenshot&image_size=landscape_16_9" alt="项目3">
+                    <h3>项目3</h3>
+                    <p>这是一个数据可视化项目，使用D3.js和Python开发，帮助用户直观地理解复杂的数据。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>联系我</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">消息</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">发送消息</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <p>邮箱: sandy@example.com</p>
+                <p>电话: 123-456-7890</p>
+                <p>地址: 中国，北京</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sandy. 保留所有权利。</p>
+        </div>
+    </footer>
+</body>
+</html>
