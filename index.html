@@ -13,7 +13,7 @@
                 <h1>Sandy</h1>
                 <ul>
                     <li><a href="#home">首页</a></li>
-                    <li><a href="#python-course">Python课程</a></li>
+                    <li><a href="python-course.html">Python课程</a></li>
                     <li><a href="#about">关于我</a></li>
                     <li><a href="#skills">技能</a></li>
                     <li><a href="#projects">项目</a></li>
@@ -22,127 +22,6 @@
             </div>
         </nav>
     </header>
-
-    <section id="python-course" class="python-course" style="padding-top: 100px;">
-        <div class="container">
-            <h2 class="python-course-title">Python基础课程学习</h2>
-            <p class="python-course-subtitle">从零开始，系统学习Python编程</p>
-            
-            <div class="python-course-grid">
-                <div class="python-course-card" onclick="toggleLesson(1)">
-                    <div class="course-card-header">
-                        <span class="course-icon">📚</span>
-                        <h3>第一章：Python简介</h3>
-                    </div>
-                    <p class="course-desc">了解Python的历史、特点和应用场景</p>
-                    <div class="lesson-content" id="lesson-1">
-                        <h4>课程内容：</h4>
-                        <ul>
-                            <li>Python是什么</li>
-                            <li>Python的发展历史</li>
-                            <li>Python的特点和优势</li>
-                            <li>Python的应用领域</li>
-                        </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>print("Hello, Python!")</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="python-course-card" onclick="toggleLesson(2)">
-                    <div class="course-card-header">
-                        <span class="course-icon">💻</span>
-                        <h3>第二章：变量与数据类型</h3>
-                    </div>
-                    <p class="course-desc">学习Python的基本数据类型和变量声明</p>
-                    <div class="lesson-content" id="lesson-2">
-                        <h4>课程内容：</h4>
-                        <ul>
-                            <li>变量的定义和使用</li>
-                            <li>整数和浮点数</li>
-                            <li>字符串操作</li>
-                            <li>布尔值和None</li>
-                        </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>name = "Python"
-age = 30
-pi = 3.14159
-is_awesome = True</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="python-course-card" onclick="toggleLesson(3)">
-                    <div class="course-card-header">
-                        <span class="course-icon">🔀</span>
-                        <h3>第三章：控制流程</h3>
-                    </div>
-                    <p class="course-desc">掌握条件语句和循环结构</p>
-                    <div class="lesson-content" id="lesson-3">
-                        <h4>课程内容：</h4>
-                        <ul>
-                            <li>if-elif-else语句</li>
-                            <li>for循环</li>
-                            <li>while循环</li>
-                            <li>break和continue</li>
-                        </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>age = 18
-if age >= 18:
-    print("成年人")
-else:
-    print("未成年人")
-
-for i in range(5):
-    print(i)</code></pre>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="python-course-card" onclick="toggleLesson(4)">
-                    <div class="course-card-header">
-                        <span class="course-icon">📦</span>
-                        <h3>第四章：函数</h3>
-                    </div>
-                    <p class="course-desc">学习如何定义和使用函数</p>
-                    <div class="lesson-content" id="lesson-4">
-                        <h4>课程内容：</h4>
-                        <ul>
-                            <li>函数的定义</li>
-                            <li>参数和返回值</li>
-                            <li>默认参数</li>
-                            <li>可变参数</li>
-                        </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>def greet(name):
-    return f"Hello, {name}!"
-
-message = greet("Python")
-print(message)</code></pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        function toggleLesson(lessonId) {
-            const content = document.getElementById('lesson-' + lessonId);
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                document.querySelectorAll('.lesson-content').forEach(c => {
-                    c.style.display = 'none';
-                });
-                content.style.display = 'block';
-            }
-        }
-    </script>
 
     <section id="home" class="hero">
         <div class="container">
