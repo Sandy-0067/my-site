@@ -5,6 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Python基础课程 - Sandy的个人网站</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
         <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
     </head>
 <body>
@@ -44,16 +48,20 @@
                             <li>Python的特点和优势</li>
                             <li>Python的应用领域</li>
                         </ul>
-                        <div class="code-editor">
+                        <div class="code-editor-wrapper">
                             <div class="code-editor-header">
                                 <span class="code-title">示例代码：</span>
                                 <div class="code-editor-controls">
-                                    <button onclick="runPythonCode(1)" class="run-btn">运行</button>
-                                    <button onclick="toggleOutput(1)" class="toggle-btn">展开/收起</button>
+                                    <button onclick="runPythonCode(1)" class="run-btn">▶ 运行</button>
+                                    <button onclick="toggleOutput(1)" class="toggle-btn">📋 输出</button>
+                                    <button onclick="toggleFloatingEditor(1)" class="float-btn">🖥 悬浮</button>
                                 </div>
                             </div>
-                            <pre class="code-input" id="code-1"><code>print("Hello, Python!")</code></pre>
-                            <div class="code-output" id="output-1" style="display: none;">
+                            <div class="code-editor-container">
+                                <textarea id="code-editor-1" class="codemirror-editor">print("Hello, Python!")
+print("欢迎来到Python的世界！")</textarea>
+                            </div>
+                            <div class="code-output" id="output-1">
                                 <h5>输出：</h5>
                                 <pre class="output-content" id="output-content-1"></pre>
                             </div>
@@ -75,23 +83,31 @@
                             <li>字符串操作</li>
                             <li>布尔值和None</li>
                         </ul>
-                        <div class="code-editor">
+                        <div class="code-editor-wrapper">
                             <div class="code-editor-header">
                                 <span class="code-title">示例代码：</span>
                                 <div class="code-editor-controls">
-                                    <button onclick="runPythonCode(2)" class="run-btn">运行</button>
-                                    <button onclick="toggleOutput(2)" class="toggle-btn">展开/收起</button>
+                                    <button onclick="runPythonCode(2)" class="run-btn">▶ 运行</button>
+                                    <button onclick="toggleOutput(2)" class="toggle-btn">📋 输出</button>
+                                    <button onclick="toggleFloatingEditor(2)" class="float-btn">🖥 悬浮</button>
                                 </div>
                             </div>
-                            <pre class="code-input" id="code-2"><code>name = "Python"
+                            <div class="code-editor-container">
+                                <textarea id="code-editor-2" class="codemirror-editor">name = "Python"
 age = 30
 pi = 3.14159
 is_awesome = True
+
 print("姓名:", name)
 print("年龄:", age)
 print("π:", pi)
-print("是否很棒:", is_awesome)</code></pre>
-                            <div class="code-output" id="output-2" style="display: none;">
+print("是否很棒:", is_awesome)
+
+# 字符串操作
+print("\n" + name.upper())
+print(f"Hello, {name}!")</textarea>
+                            </div>
+                            <div class="code-output" id="output-2">
                                 <h5>输出：</h5>
                                 <pre class="output-content" id="output-content-2"></pre>
                             </div>
@@ -113,15 +129,17 @@ print("是否很棒:", is_awesome)</code></pre>
                             <li>while循环</li>
                             <li>break和continue</li>
                         </ul>
-                        <div class="code-editor">
+                        <div class="code-editor-wrapper">
                             <div class="code-editor-header">
                                 <span class="code-title">示例代码：</span>
                                 <div class="code-editor-controls">
-                                    <button onclick="runPythonCode(3)" class="run-btn">运行</button>
-                                    <button onclick="toggleOutput(3)" class="toggle-btn">展开/收起</button>
+                                    <button onclick="runPythonCode(3)" class="run-btn">▶ 运行</button>
+                                    <button onclick="toggleOutput(3)" class="toggle-btn">📋 输出</button>
+                                    <button onclick="toggleFloatingEditor(3)" class="float-btn">🖥 悬浮</button>
                                 </div>
                             </div>
-                            <pre class="code-input" id="code-3"><code>age = 18
+                            <div class="code-editor-container">
+                                <textarea id="code-editor-3" class="codemirror-editor">age = 18
 if age >= 18:
     print("成年人")
 else:
@@ -129,8 +147,15 @@ else:
 
 print("\n打印数字 0 到 4:")
 for i in range(5):
-    print(i)</code></pre>
-                            <div class="code-output" id="output-3" style="display: none;">
+    print(i)
+
+print("\n九九乘法表:")
+for i in range(1, 10):
+    for j in range(1, i + 1):
+        print(f"{j}×{i}={i*j}", end="  ")
+    print()</textarea>
+                            </div>
+                            <div class="code-output" id="output-3">
                                 <h5>输出：</h5>
                                 <pre class="output-content" id="output-content-3"></pre>
                             </div>
@@ -152,24 +177,33 @@ for i in range(5):
                             <li>默认参数</li>
                             <li>可变参数</li>
                         </ul>
-                        <div class="code-editor">
+                        <div class="code-editor-wrapper">
                             <div class="code-editor-header">
                                 <span class="code-title">示例代码：</span>
                                 <div class="code-editor-controls">
-                                    <button onclick="runPythonCode(4)" class="run-btn">运行</button>
-                                    <button onclick="toggleOutput(4)" class="toggle-btn">展开/收起</button>
+                                    <button onclick="runPythonCode(4)" class="run-btn">▶ 运行</button>
+                                    <button onclick="toggleOutput(4)" class="toggle-btn">📋 输出</button>
+                                    <button onclick="toggleFloatingEditor(4)" class="float-btn">🖥 悬浮</button>
                                 </div>
                             </div>
-                            <pre class="code-input" id="code-4"><code>def greet(name):
-    return f"Hello, {name}!"
+                            <div class="code-editor-container">
+                                <textarea id="code-editor-4" class="codemirror-editor">def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
 
-message = greet("Python")
-print(message)
+def add(a, b=0):
+    return a + b
 
-# 测试不同参数
-print(greet("世界"))
-print(greet("Sandy"))</code></pre>
-                            <div class="code-output" id="output-4" style="display: none;">
+def sum_all(*args):
+    return sum(args)
+
+# 测试函数
+print(greet("Python"))
+print(greet("世界", "你好"))
+print(add(5, 3))
+print(add(10))
+print(sum_all(1, 2, 3, 4, 5))</textarea>
+                            </div>
+                            <div class="code-output" id="output-4">
                                 <h5>输出：</h5>
                                 <pre class="output-content" id="output-content-4"></pre>
                             </div>
@@ -180,10 +214,37 @@ print(greet("Sandy"))</code></pre>
         </div>
     </section>
 
+    <div class="floating-editor-container" id="floating-editor">
+        <div class="floating-editor-header">
+            <span class="floating-title">Python 代码编辑器</span>
+            <div class="floating-controls">
+                <button onclick="minimizeFloatingEditor()" class="min-btn">−</button>
+                <button onclick="closeFloatingEditor()" class="close-btn">×</button>
+            </div>
+        </div>
+        <div class="floating-editor-body">
+            <div class="floating-code-container">
+                <textarea id="floating-code" class="codemirror-editor"></textarea>
+            </div>
+            <div class="floating-output">
+                <div class="floating-output-header">
+                    <span>输出</span>
+                    <button onclick="clearFloatingOutput()" class="clear-btn">清除</button>
+                </div>
+                <pre class="floating-output-content" id="floating-output-content"></pre>
+            </div>
+        </div>
+        <div class="floating-editor-footer">
+            <button onclick="runFloatingCode()" class="run-float-btn">▶ 运行</button>
+        </div>
+    </div>
+
     <script>
         let pyodide;
+        let editors = {};
+        let floatingEditor = null;
+        let currentFloatingLessonId = null;
 
-        // 初始化Pyodide
         async function initPyodide() {
             if (!pyodide) {
                 pyodide = await loadPyodide({
@@ -193,43 +254,56 @@ print(greet("Sandy"))</code></pre>
             return pyodide;
         }
 
-        // 运行Python代码
+        function initCodeMirror() {
+            for (let i = 1; i <= 4; i++) {
+                const textarea = document.getElementById('code-editor-' + i);
+                if (textarea) {
+                    editors[i] = CodeMirror.fromTextArea(textarea, {
+                        mode: 'python',
+                        theme: 'dracula',
+                        lineNumbers: true,
+                        indentUnit: 4,
+                        tabSize: 4,
+                        indentWithTabs: false,
+                        lineWrapping: true,
+                        autoCloseBrackets: true,
+                        matchBrackets: true
+                    });
+                    editors[i].setSize('100%', '200px');
+                }
+            }
+        }
+
         async function runPythonCode(lessonId) {
-            const codeElement = document.getElementById('code-' + lessonId);
-            const code = codeElement.textContent.trim();
             const outputElement = document.getElementById('output-content-' + lessonId);
             const outputContainer = document.getElementById('output-' + lessonId);
 
             try {
-                // 显示加载状态
-                outputElement.textContent = '运行中...';
+                outputElement.textContent = '⏳ 运行中...';
                 outputContainer.style.display = 'block';
 
-                // 初始化Pyodide
                 await initPyodide();
 
-                // 重定向标准输出
+                const code = editors[lessonId].getValue();
+
                 pyodide.runPython(`
                     import sys
                     import io
                     sys.stdout = io.StringIO()
                 `);
 
-                // 运行用户代码
                 pyodide.runPython(code);
 
-                // 获取输出
                 const output = pyodide.runPython(`sys.stdout.getvalue()`);
-                outputElement.textContent = output || '无输出';
+                outputElement.textContent = output || '✅ 无输出';
             } catch (error) {
-                outputElement.textContent = '错误: ' + error.message;
+                outputElement.textContent = '❌ 错误: ' + error.message;
             }
         }
 
-        // 切换输出显示/隐藏
         function toggleOutput(lessonId) {
             const outputContainer = document.getElementById('output-' + lessonId);
-            if (outputContainer.style.display === 'block') {
+            if (outputContainer.style.display === 'block' || outputContainer.style.display === '') {
                 outputContainer.style.display = 'none';
             } else {
                 outputContainer.style.display = 'block';
@@ -237,6 +311,7 @@ print(greet("Sandy"))</code></pre>
         }
 
         function toggleLesson(lessonId) {
+            event.stopPropagation();
             const content = document.getElementById('lesson-' + lessonId);
             if (content.style.display === 'block') {
                 content.style.display = 'none';
@@ -247,6 +322,140 @@ print(greet("Sandy"))</code></pre>
                 content.style.display = 'block';
             }
         }
+
+        function toggleFloatingEditor(lessonId) {
+            event.stopPropagation();
+            const floatingContainer = document.getElementById('floating-editor');
+            
+            if (floatingContainer.style.display === 'block') {
+                if (currentFloatingLessonId === lessonId) {
+                    closeFloatingEditor();
+                    return;
+                }
+            }
+            
+            currentFloatingLessonId = lessonId;
+            floatingContainer.style.display = 'block';
+            
+            if (!floatingEditor) {
+                const textarea = document.getElementById('floating-code');
+                floatingEditor = CodeMirror.fromTextArea(textarea, {
+                    mode: 'python',
+                    theme: 'dracula',
+                    lineNumbers: true,
+                    indentUnit: 4,
+                    tabSize: 4,
+                    indentWithTabs: false,
+                    lineWrapping: true,
+                    autoCloseBrackets: true,
+                    matchBrackets: true
+                });
+                floatingEditor.setSize('100%', '100%');
+            }
+            
+            floatingEditor.setValue(editors[lessonId].getValue());
+            document.querySelector('.floating-title').textContent = `Python 编辑器 - 第${lessonId}章`;
+        }
+
+        function minimizeFloatingEditor() {
+            const floatingContainer = document.getElementById('floating-editor');
+            floatingContainer.classList.toggle('minimized');
+        }
+
+        function closeFloatingEditor() {
+            const floatingContainer = document.getElementById('floating-editor');
+            floatingContainer.style.display = 'none';
+            floatingContainer.classList.remove('minimized');
+            currentFloatingLessonId = null;
+        }
+
+        function clearFloatingOutput() {
+            document.getElementById('floating-output-content').textContent = '';
+        }
+
+        async function runFloatingCode() {
+            const outputElement = document.getElementById('floating-output-content');
+
+            try {
+                outputElement.textContent = '⏳ 运行中...';
+                await initPyodide();
+
+                const code = floatingEditor.getValue();
+
+                pyodide.runPython(`
+                    import sys
+                    import io
+                    sys.stdout = io.StringIO()
+                `);
+
+                pyodide.runPython(code);
+
+                const output = pyodide.runPython(`sys.stdout.getvalue()`);
+                outputElement.textContent = output || '✅ 无输出';
+                
+                if (currentFloatingLessonId && editors[currentFloatingLessonId]) {
+                    editors[currentFloatingLessonId].setValue(code);
+                }
+            } catch (error) {
+                outputElement.textContent = '❌ 错误: ' + error.message;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initCodeMirror();
+        });
+
+        let isDragging = false;
+        let isResizing = false;
+        let dragOffset = { x: 0, y: 0 };
+        let resizeStart = { x: 0, y: 0, width: 0, height: 0 };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingContainer = document.getElementById('floating-editor');
+            const header = floatingContainer.querySelector('.floating-editor-header');
+
+            header.addEventListener('mousedown', function(e) {
+                if (e.target.classList.contains('min-btn') || e.target.classList.contains('close-btn')) return;
+                
+                isDragging = true;
+                dragOffset.x = e.clientX - floatingContainer.offsetLeft;
+                dragOffset.y = e.clientY - floatingContainer.offsetTop;
+                floatingContainer.style.zIndex = '10001';
+            });
+
+            const resizeHandle = document.createElement('div');
+            resizeHandle.className = 'resize-handle';
+            floatingContainer.appendChild(resizeHandle);
+
+            resizeHandle.addEventListener('mousedown', function(e) {
+                isResizing = true;
+                resizeStart.x = e.clientX;
+                resizeStart.y = e.clientY;
+                resizeStart.width = floatingContainer.offsetWidth;
+                resizeStart.height = floatingContainer.offsetHeight;
+                floatingContainer.style.zIndex = '10001';
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    floatingContainer.style.left = (e.clientX - dragOffset.x) + 'px';
+                    floatingContainer.style.top = (e.clientY - dragOffset.y) + 'px';
+                    floatingContainer.style.right = 'auto';
+                    floatingContainer.style.bottom = 'auto';
+                }
+                if (isResizing) {
+                    const newWidth = resizeStart.width + (e.clientX - resizeStart.x);
+                    const newHeight = resizeStart.height + (e.clientY - resizeStart.y);
+                    floatingContainer.style.width = Math.max(400, newWidth) + 'px';
+                    floatingContainer.style.height = Math.max(300, newHeight) + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+                isResizing = false;
+            });
+        });
     </script>
 
     <footer>
