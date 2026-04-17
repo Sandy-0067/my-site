@@ -419,29 +419,119 @@ footer p {
     font-weight: bold;
 }
 
-.code-example {
+.code-editor {
     background: #2d2d2d;
     border-radius: 8px;
-    padding: 1.5rem;
+    overflow: hidden;
     margin-top: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.code-editor-header {
+    background: #1e1e1e;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #444;
 }
 
 .code-title {
     color: #888;
     font-size: 0.9rem;
-    display: block;
-    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
-.code-example pre {
+.code-editor-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.run-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.run-btn:hover {
+    background: #45a049;
+}
+
+.run-btn:active {
+    transform: translateY(1px);
+}
+
+.toggle-btn {
+    background: #666;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: #777;
+}
+
+.code-input {
     margin: 0;
+    padding: 1.5rem;
     overflow-x: auto;
+    background: #2d2d2d;
 }
 
-.code-example code {
+.code-input code {
     color: #a5d6ff;
     font-family: 'Courier New', monospace;
     font-size: 0.95rem;
     line-height: 1.6;
     white-space: pre-wrap;
+}
+
+.code-output {
+    background: #252526;
+    border-top: 1px solid #444;
+    padding: 1.5rem;
+    animation: slideDown 0.3s ease;
+}
+
+.code-output h5 {
+    color: #ddd;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.output-content {
+    color: #f4f4f4;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-wrap;
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 4px;
+    border-left: 3px solid #4CAF50;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

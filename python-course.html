@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python基础课程 - Sandy的个人网站</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Python基础课程 - Sandy的个人网站</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    </head>
 <body>
     <header>
         <nav>
@@ -43,9 +44,19 @@
                             <li>Python的特点和优势</li>
                             <li>Python的应用领域</li>
                         </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>print("Hello, Python!")</code></pre>
+                        <div class="code-editor">
+                            <div class="code-editor-header">
+                                <span class="code-title">示例代码：</span>
+                                <div class="code-editor-controls">
+                                    <button onclick="runPythonCode(1)" class="run-btn">运行</button>
+                                    <button onclick="toggleOutput(1)" class="toggle-btn">展开/收起</button>
+                                </div>
+                            </div>
+                            <pre class="code-input" id="code-1"><code>print("Hello, Python!")</code></pre>
+                            <div class="code-output" id="output-1" style="display: none;">
+                                <h5>输出：</h5>
+                                <pre class="output-content" id="output-content-1"></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,12 +75,26 @@
                             <li>字符串操作</li>
                             <li>布尔值和None</li>
                         </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>name = "Python"
+                        <div class="code-editor">
+                            <div class="code-editor-header">
+                                <span class="code-title">示例代码：</span>
+                                <div class="code-editor-controls">
+                                    <button onclick="runPythonCode(2)" class="run-btn">运行</button>
+                                    <button onclick="toggleOutput(2)" class="toggle-btn">展开/收起</button>
+                                </div>
+                            </div>
+                            <pre class="code-input" id="code-2"><code>name = "Python"
 age = 30
 pi = 3.14159
-is_awesome = True</code></pre>
+is_awesome = True
+print("姓名:", name)
+print("年龄:", age)
+print("π:", pi)
+print("是否很棒:", is_awesome)</code></pre>
+                            <div class="code-output" id="output-2" style="display: none;">
+                                <h5>输出：</h5>
+                                <pre class="output-content" id="output-content-2"></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,16 +113,27 @@ is_awesome = True</code></pre>
                             <li>while循环</li>
                             <li>break和continue</li>
                         </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>age = 18
+                        <div class="code-editor">
+                            <div class="code-editor-header">
+                                <span class="code-title">示例代码：</span>
+                                <div class="code-editor-controls">
+                                    <button onclick="runPythonCode(3)" class="run-btn">运行</button>
+                                    <button onclick="toggleOutput(3)" class="toggle-btn">展开/收起</button>
+                                </div>
+                            </div>
+                            <pre class="code-input" id="code-3"><code>age = 18
 if age >= 18:
     print("成年人")
 else:
     print("未成年人")
 
+print("\n打印数字 0 到 4:")
 for i in range(5):
     print(i)</code></pre>
+                            <div class="code-output" id="output-3" style="display: none;">
+                                <h5>输出：</h5>
+                                <pre class="output-content" id="output-content-3"></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -116,13 +152,27 @@ for i in range(5):
                             <li>默认参数</li>
                             <li>可变参数</li>
                         </ul>
-                        <div class="code-example">
-                            <span class="code-title">示例代码：</span>
-                            <pre><code>def greet(name):
+                        <div class="code-editor">
+                            <div class="code-editor-header">
+                                <span class="code-title">示例代码：</span>
+                                <div class="code-editor-controls">
+                                    <button onclick="runPythonCode(4)" class="run-btn">运行</button>
+                                    <button onclick="toggleOutput(4)" class="toggle-btn">展开/收起</button>
+                                </div>
+                            </div>
+                            <pre class="code-input" id="code-4"><code>def greet(name):
     return f"Hello, {name}!"
 
 message = greet("Python")
-print(message)</code></pre>
+print(message)
+
+# 测试不同参数
+print(greet("世界"))
+print(greet("Sandy"))</code></pre>
+                            <div class="code-output" id="output-4" style="display: none;">
+                                <h5>输出：</h5>
+                                <pre class="output-content" id="output-content-4"></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,6 +181,61 @@ print(message)</code></pre>
     </section>
 
     <script>
+        let pyodide;
+
+        // 初始化Pyodide
+        async function initPyodide() {
+            if (!pyodide) {
+                pyodide = await loadPyodide({
+                    indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/"
+                });
+            }
+            return pyodide;
+        }
+
+        // 运行Python代码
+        async function runPythonCode(lessonId) {
+            const codeElement = document.getElementById('code-' + lessonId);
+            const code = codeElement.textContent.trim();
+            const outputElement = document.getElementById('output-content-' + lessonId);
+            const outputContainer = document.getElementById('output-' + lessonId);
+
+            try {
+                // 显示加载状态
+                outputElement.textContent = '运行中...';
+                outputContainer.style.display = 'block';
+
+                // 初始化Pyodide
+                await initPyodide();
+
+                // 重定向标准输出
+                pyodide.runPython(`
+                    import sys
+                    import io
+                    sys.stdout = io.StringIO()
+                `);
+
+                // 运行用户代码
+                pyodide.runPython(code);
+
+                // 获取输出
+                const output = pyodide.runPython(`sys.stdout.getvalue()`);
+                outputElement.textContent = output || '无输出';
+            } catch (error) {
+                outputElement.textContent = '错误: ' + error.message;
+            }
+        }
+
+        // 切换输出显示/隐藏
+        function toggleOutput(lessonId) {
+            const outputContainer = document.getElementById('output-' + lessonId);
+            if (outputContainer.style.display === 'block') {
+                outputContainer.style.display = 'none';
+            } else {
+                outputContainer.style.display = 'block';
+            }
+        }
+
         function toggleLesson(lessonId) {
             const content = document.getElementById('lesson-' + lessonId);
             if (content.style.display === 'block') {
