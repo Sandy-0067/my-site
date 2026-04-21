@@ -419,8 +419,8 @@ footer p {
     font-weight: bold;
 }
 
-.code-editor-wrapper {
-    background: #1e1e1e;
+.code-editor {
+    background: #2d2d2d;
     border-radius: 8px;
     overflow: hidden;
     margin-top: 1rem;
@@ -428,17 +428,17 @@ footer p {
 }
 
 .code-editor-header {
-    background: #252526;
-    padding: 0.8rem 1.2rem;
+    background: #1e1e1e;
+    padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #3c3c3c;
+    border-bottom: 1px solid #444;
 }
 
 .code-title {
-    color: #cccccc;
-    font-size: 0.85rem;
+    color: #888;
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
@@ -447,250 +447,82 @@ footer p {
     gap: 0.5rem;
 }
 
-.run-btn,
-.toggle-btn,
-.float-btn {
-    color: white;
-    border: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-}
-
 .run-btn {
     background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
 }
 
 .run-btn:hover {
     background: #45a049;
 }
 
+.run-btn:active {
+    transform: translateY(1px);
+}
+
 .toggle-btn {
-    background: #0e639c;
+    background: #666;
+    color: white;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
 }
 
 .toggle-btn:hover {
-    background: #1177bb;
+    background: #777;
 }
 
-.float-btn {
-    background: #68217a;
+.code-input {
+    margin: 0;
+    padding: 1.5rem;
+    overflow-x: auto;
+    background: #2d2d2d;
 }
 
-.float-btn:hover {
-    background: #802899;
-}
-
-.code-editor-container {
-    background: #1e1e1e;
-}
-
-.CodeMirror {
-    font-family: 'Fira Code', 'Consolas', monospace;
-    font-size: 14px;
-    height: auto;
+.code-input code {
+    color: #a5d6ff;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
 }
 
 .code-output {
-    background: #1e1e1e;
-    border-top: 1px solid #3c3c3c;
-    padding: 1rem;
+    background: #252526;
+    border-top: 1px solid #444;
+    padding: 1.5rem;
     animation: slideDown 0.3s ease;
-    display: none;
 }
 
 .code-output h5 {
-    color: #cccccc;
-    margin: 0 0 0.8rem 0;
-    font-size: 0.85rem;
+    color: #ddd;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
 .output-content {
-    color: #d4d4d4;
-    font-family: 'Consolas', monospace;
-    font-size: 13px;
+    color: #f4f4f4;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
     white-space: pre-wrap;
-    background: #0d0d0d;
+    background: #1e1e1e;
     padding: 1rem;
     border-radius: 4px;
     border-left: 3px solid #4CAF50;
-}
-
-.floating-editor-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    height: 500px;
-    background: #1e1e1e;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    z-index: 10000;
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.floating-editor-header {
-    background: #252526;
-    padding: 0.8rem 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #3c3c3c;
-    cursor: move;
-    user-select: none;
-}
-
-.floating-title {
-    color: #cccccc;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.floating-controls {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.min-btn,
-.close-btn {
-    background: transparent;
-    color: #cccccc;
-    border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    line-height: 1;
-    transition: all 0.2s ease;
-}
-
-.min-btn:hover {
-    background: #0e639c;
-}
-
-.close-btn:hover {
-    background: #f14c4c;
-}
-
-.floating-editor-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.floating-code-container {
-    flex: 1;
-    border-bottom: 1px solid #3c3c3c;
-    overflow: hidden;
-}
-
-.floating-code-container .CodeMirror {
-    height: 100%;
-}
-
-.floating-output {
-    height: 150px;
-    background: #1e1e1e;
-    display: flex;
-    flex-direction: column;
-}
-
-.floating-output-header {
-    background: #252526;
-    padding: 0.5rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #3c3c3c;
-}
-
-.floating-output-header span {
-    color: #cccccc;
-    font-size: 0.8rem;
-    font-weight: 500;
-}
-
-.clear-btn {
-    background: #666;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    transition: background 0.2s ease;
-}
-
-.clear-btn:hover {
-    background: #777;
-}
-
-.floating-output-content {
-    flex: 1;
-    margin: 0;
-    padding: 0.8rem;
-    color: #d4d4d4;
-    font-family: 'Consolas', monospace;
-    font-size: 13px;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    overflow-y: auto;
-    background: #0d0d0d;
-}
-
-.floating-editor-footer {
-    background: #252526;
-    padding: 0.8rem;
-    display: flex;
-    justify-content: center;
-    border-top: 1px solid #3c3c3c;
-}
-
-.run-float-btn {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 0.6rem 2rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: background 0.2s ease;
-}
-
-.run-float-btn:hover {
-    background: #45a049;
-}
-
-.resize-handle {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    bottom: 0;
-    right: 0;
-    cursor: se-resize;
-    background: linear-gradient(135deg, transparent 50%, #666 50%);
-}
-
-.floating-editor-container.minimized {
-    height: auto !important;
-    width: 250px !important;
-}
-
-.floating-editor-container.minimized .floating-editor-body,
-.floating-editor-container.minimized .floating-editor-footer {
-    display: none;
 }
 
 @keyframes slideDown {
