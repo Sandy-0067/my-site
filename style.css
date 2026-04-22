@@ -5,9 +5,10 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', 'Arial', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #e0e0e0;
+    background: #121212;
 }
 
 .container {
@@ -17,13 +18,14 @@ body {
 }
 
 header {
-    background: #333;
+    background: #1a1a1a;
     color: #fff;
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 nav {
@@ -34,6 +36,10 @@ nav {
 
 nav h1 {
     font-size: 1.8rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 nav ul {
@@ -46,21 +52,34 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #e0e0e0;
     text-decoration: none;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 nav ul li a:hover {
-    color: #f4f4f4;
+    color: #667eea;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 .hero {
-    background: linear-gradient(rgba(0, 30, 60, 0.25), rgba(0, 30, 60, 0.25)), url('images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -68,35 +87,59 @@ nav ul li a:hover {
     text-align: center;
     color: #fff;
     padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
 }
 
 .hero h2 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 .hero h2 span {
-    color: #4CAF50;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    color: #b0b0b0;
 }
 
 .btn {
     display: inline-block;
-    background: #4CAF50;
+    background: linear-gradient(45deg, #667eea, #764ba2);
     color: #fff;
-    padding: 10px 20px;
+    padding: 12px 24px;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 1rem;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
 .btn:hover {
-    background: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
 section {
@@ -110,11 +153,15 @@ section {
 
 .section-title h2 {
     font-size: 2.5rem;
-    color: #333;
+    color: #fff;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .about {
-    background: #f4f4f4;
+    background: #1a1a1a;
 }
 
 .about-content {
@@ -128,6 +175,8 @@ section {
     height: 300px;
     border-radius: 50%;
     margin-right: 3rem;
+    border: 3px solid #667eea;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
 }
 
 .about-text {
@@ -137,10 +186,11 @@ section {
 .about-text p {
     margin-bottom: 1rem;
     font-size: 1.1rem;
+    color: #d0d0d0;
 }
 
 .skills {
-    background: #fff;
+    background: #121212;
 }
 
 .skills-grid {
@@ -151,25 +201,33 @@ section {
 }
 
 .skill-item {
-    background: #f9f9f9;
+    background: #1a1a1a;
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid #2d2d2d;
 }
 
 .skill-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
 }
 
 .skill-item h3 {
     margin-bottom: 1rem;
-    color: #333;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.skill-item p {
+    color: #b0b0b0;
 }
 
 .projects {
-    background: #f4f4f4;
+    background: #1a1a1a;
 }
 
 .projects-grid {
@@ -180,35 +238,40 @@ section {
 }
 
 .project-item {
-    background: #fff;
+    background: #2d2d2d;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: 1px solid #3d3d3d;
 }
 
 .project-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
 }
 
 .project-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-bottom: 2px solid #667eea;
 }
 
 .project-item h3 {
     padding: 1rem;
-    color: #333;
+    color: #fff;
+    font-size: 1.2rem;
 }
 
 .project-item p {
     padding: 0 1rem 1.5rem;
-    color: #666;
+    color: #b0b0b0;
 }
 
 .contact {
-    background: #fff;
+    background: #121212;
 }
 
 .contact-form {
@@ -223,20 +286,31 @@ section {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #e0e0e0;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #3d3d3d;
+    border-radius: 8px;
     font-size: 1rem;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
 }
 
 .form-group textarea {
     resize: vertical;
+    min-height: 120px;
 }
 
 .contact-info {
@@ -247,13 +321,15 @@ section {
 .contact-info p {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
+    color: #b0b0b0;
 }
 
 footer {
-    background: #333;
-    color: #fff;
+    background: #1a1a1a;
+    color: #b0b0b0;
     text-align: center;
     padding: 2rem 0;
+    border-top: 1px solid #2d2d2d;
 }
 
 footer p {
@@ -312,22 +388,25 @@ footer p {
 }
 
 .python-course {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #e0e0e0;
 }
 
 .python-course-title {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    color: #fff;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .python-course-subtitle {
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 3rem;
-    opacity: 0.9;
+    color: #b0b0b0;
 }
 
 .python-course-grid {
@@ -337,17 +416,19 @@ footer p {
 }
 
 .python-course-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: #2d2d2d;
     border-radius: 15px;
     padding: 2rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #3d3d3d;
 }
 
 .python-course-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
 }
 
 .course-card-header {
@@ -362,13 +443,13 @@ footer p {
 }
 
 .python-course-card h3 {
-    color: #333;
+    color: #fff;
     font-size: 1.3rem;
     margin: 0;
 }
 
 .course-desc {
-    color: #666;
+    color: #b0b0b0;
     font-size: 1rem;
     margin-bottom: 1rem;
 }
@@ -393,7 +474,7 @@ footer p {
 }
 
 .lesson-content h4 {
-    color: #333;
+    color: #fff;
     margin-bottom: 1rem;
     font-size: 1.1rem;
 }
@@ -405,7 +486,7 @@ footer p {
 }
 
 .lesson-content li {
-    color: #555;
+    color: #d0d0d0;
     padding: 0.5rem 0;
     padding-left: 1.5rem;
     position: relative;
@@ -420,24 +501,25 @@ footer p {
 }
 
 .code-editor {
-    background: #2d2d2d;
+    background: #1e1e1e;
     border-radius: 8px;
     overflow: hidden;
     margin-top: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #3d3d3d;
 }
 
 .code-editor-header {
-    background: #1e1e1e;
+    background: #252526;
     padding: 1rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #3d3d3d;
 }
 
 .code-title {
-    color: #888;
+    color: #b0b0b0;
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -448,7 +530,7 @@ footer p {
 }
 
 .run-btn {
-    background: #4CAF50;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
     color: white;
     border: none;
     padding: 0.4rem 1rem;
@@ -456,19 +538,20 @@ footer p {
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 500;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .run-btn:hover {
-    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
 }
 
 .run-btn:active {
-    transform: translateY(1px);
+    transform: translateY(0);
 }
 
 .toggle-btn {
-    background: #666;
+    background: linear-gradient(45deg, #0e639c, #1177bb);
     color: white;
     border: none;
     padding: 0.4rem 1rem;
@@ -476,37 +559,38 @@ footer p {
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 500;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .toggle-btn:hover {
-    background: #777;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(14, 99, 156, 0.4);
 }
 
 .code-input {
     margin: 0;
     padding: 1.5rem;
     overflow-x: auto;
-    background: #2d2d2d;
+    background: #1e1e1e;
 }
 
 .code-input code {
     color: #a5d6ff;
-    font-family: 'Courier New', monospace;
+    font-family: 'Fira Code', 'Courier New', monospace;
     font-size: 0.95rem;
     line-height: 1.6;
     white-space: pre-wrap;
 }
 
 .code-output {
-    background: #252526;
-    border-top: 1px solid #444;
+    background: #1e1e1e;
+    border-top: 1px solid #3d3d3d;
     padding: 1.5rem;
     animation: slideDown 0.3s ease;
 }
 
 .code-output h5 {
-    color: #ddd;
+    color: #e0e0e0;
     margin: 0 0 1rem 0;
     font-size: 0.9rem;
     font-weight: 500;
@@ -514,24 +598,13 @@ footer p {
 
 .output-content {
     color: #f4f4f4;
-    font-family: 'Courier New', monospace;
+    font-family: 'Fira Code', 'Courier New', monospace;
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
     white-space: pre-wrap;
-    background: #1e1e1e;
+    background: #0d0d0d;
     padding: 1rem;
     border-radius: 4px;
     border-left: 3px solid #4CAF50;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
